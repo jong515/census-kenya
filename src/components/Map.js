@@ -1,7 +1,7 @@
 import './Map.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React,{useState} from 'react';
-import { MapContainer, TileLayer, GeoJSON} from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, Marker, Popup} from 'react-leaflet';
 import data from '../data/data.json';
 
 const Map = ()=>{
@@ -22,6 +22,7 @@ const Map = ()=>{
             fillOpacity: 0.7
         });
     });
+
 
     const highlightFeature = (e=> {
         var layer = e.target;
@@ -46,11 +47,11 @@ const Map = ()=>{
     })
 
 
-
     const onEachFeature= (feature, layer)=> {
         layer.on({
             mouseover: highlightFeature,
             mouseout: resetHighlight,
+
         });
     }
     const mapPolygonColorToDensity=(density => {
@@ -102,10 +103,21 @@ const Map = ()=>{
                         attribution="Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
                             url="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
                     />
-                   {feature && (
+                    <Marker position={[1.286389, 38.817223]}>
+                        <Popup>
+                            {onselect.county}
+                        </Popup>
+                    </Marker>
+                   {feature &&   
+                   <Marker position={([1.286389, 38.817223])}>
+                        <Popup>
+                            {onselect.county}
+                        </Popup>
+                    </Marker> && (
                     <GeoJSON data={feature} 
                     style={style} 
-                    onEachFeature={onEachFeature}/>
+                    onEachFeature={onEachFeature}
+                    />
                     )}
                 </MapContainer>
                 </div>

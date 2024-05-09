@@ -3,6 +3,9 @@
  * @see https://v0.dev/t/UAieIY39uOT
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
+
+
+
 export default function Component() {
     return (
       <section className="w-full py-12 md:py-24 lg:py-32">
