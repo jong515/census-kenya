@@ -1,15 +1,14 @@
-import React,{useState} from 'react';
-import { MapContainer, TileLayer, GeoJSON} from 'react-leaflet';
-import {features} from '../data/data.json';
 import './Map.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React,{useState} from 'react';
+import { MapContainer, TileLayer, GeoJSON} from 'react-leaflet';
+import data from '../data/data.json';;
 
 const Map = ()=>{
     const [onselect, setOnselect] = useState({});
 
 
-    const feature = features.map(feature=>{
+    const feature = data.features.map(feature=>{
         return(feature);
     });
 
@@ -86,7 +85,7 @@ const Map = ()=>{
                 )}
                 {onselect.county && (
                     <ul className="census-info">
-                        <li><strong>{onselect.county}</strong></li><br/>
+                        <li><strong>{onselect.county}</strong></li>
                         <li>Total Population:{onselect.total}</li>
                         <li>Men:{onselect.male}</li>
                         <li>Women:{onselect.female}</li>
