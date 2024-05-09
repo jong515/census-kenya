@@ -2,7 +2,7 @@ import './Map.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React,{useState} from 'react';
 import { MapContainer, TileLayer, GeoJSON} from 'react-leaflet';
-import data from '../data/data.json';;
+import data from '../data/data.json';
 
 const Map = ()=>{
     const [onselect, setOnselect] = useState({});
@@ -44,6 +44,8 @@ const Map = ()=>{
         setOnselect({});
         e.target.setStyle(style(e.target.feature));
     })
+
+
 
     const onEachFeature= (feature, layer)=> {
         layer.on({
@@ -91,6 +93,7 @@ const Map = ()=>{
                         <li>Women:{onselect.female}</li>
                         <li>Intersex:{onselect.intersex}</li>
                         <li>Population density:{onselect.density} people <br/> per square km</li>
+                        <li>Intersex Percentage: {(onselect.intersex/onselect.total)*100}%</li>
                     </ul>
                 )}
                 <MapContainer center={[1.286389, 38.817223]}
